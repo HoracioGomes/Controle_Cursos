@@ -1,14 +1,17 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class CursosController extends Controller
 {
-    public function index(Request $request) {
-//Captura Url acessada e mais
-//echo $request->url();
-//exit();
+    public function index(Request $request)
+    {
+        //Captura Url acessada e mais
+        //echo $request->url();
+        //exit();
 
         $cursos = [
             'Kotlin',
@@ -16,24 +19,12 @@ class CursosController extends Controller
             'Swift',
             'Arduino'
         ];
-    
-        $html = '<ul>';
-    
-        foreach ($cursos as $curso) {
-            $html .= "<li>$curso</li>";
-        }
-    
-        $html .= "</ul>";
-    
-        return $html;
+
+        return view('cursos/index', compact('cursos'));
     }
 
-
-
-
-
-
+    public function create()
+    {
+        return view('cursos/create');
+    }
 }
-
-
-

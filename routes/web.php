@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/cursos', 'CursosController@index');
+Route::get('/cursos/criar', 'CursosController@create');
