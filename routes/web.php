@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cursos', 'CursosController@index');
 Route::get('/cursos/criar', 'CursosController@create');
+Route::post('/cursos/criar', 'CursosController@store')->name('rota_criar_curso');
+Route::post('/cursos/remover/{id}', 'CursosController@destroy');
+    

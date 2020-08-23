@@ -5,10 +5,22 @@ Cursos
 @endsection
 
 @section('conteudo')  
-<a href="/cursos/criar" class="btn btn-dark mb-2">Adicionar</a>
-<ul class="list-group">
-    <?php foreach ($cursos as $curso) : ?>
-    <li class="list-group-item"><?= $curso; ?></li>
-    <?php endforeach; ?>
+<a href="{{route('rota_criar_curso')}}" class="btn btn-dark mb-2">Adicionar</a>
+    @if (!empty($mensagem))
+    <div class="alert alert-success">
+        {{$mensagem}}
+    </div>    
+    @endif
+
+<ul class="list-group">    
+    @foreach($cursos as $curso)
+    <li class="list-group-item">{{$curso->nome}}
+        <form method="POST" action="/cursos/remover/{{$curso->id}}" 
+            onsubmit="return confirm('Tem Certeza?')">
+            @csrf
+            <button class="btn btn-danger">Excluir</button> 
+         </form>
+    </li>
+    @endforeach
 </ul>
 @endsection
