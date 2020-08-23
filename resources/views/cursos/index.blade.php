@@ -14,13 +14,14 @@ Cursos
 
 <ul class="list-group">    
     @foreach($cursos as $curso)
-    <li class="list-group-item">{{$curso->nome}}
+    <li class="list-group-item d-flex justify-content-between align-items-center">{{$curso->nome}}
         <form method="POST" action="/cursos/remover/{{$curso->id}}" 
             onsubmit="return confirm('Tem Certeza?')">
             @csrf
-            <button class="btn btn-danger">Excluir</button> 
+            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button> 
          </form>
     </li>
+
     @endforeach
 </ul>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Curso;
+use App\Http\Requests\RequestCreate;
 use Illuminate\Http\Request;
 
 
@@ -24,8 +25,10 @@ class CursosController extends Controller
         return view('cursos/create');
     }
 
-    public function store(Request $request)
+    public function store(RequestCreate $request)
     {
+
+    
         $nome = $request->get('nome');
         $curso = new Curso();
         $curso->nome = $nome;
@@ -34,13 +37,13 @@ class CursosController extends Controller
             //echo ("{$curso->nome} com id: {$curso->id} foi salvo com sucesso!");
             $request->session()->flash('mensagem', "Curso {$curso->nome} com id {$curso->id} salvo com sucesso!");
         }
-        return redirect("/cursos");
+        return redirect()->route('rota_lista_cursos');
     }
 
     public function destroy(Request $request)
     {
         Curso::destroy($request->id);
         $request->session()->flash('mensagem', 'Excluído com sucesso!');
-        return redirect('/cursos');
+        return redirect()->route('rota_lista_cursos');
     }
 }
