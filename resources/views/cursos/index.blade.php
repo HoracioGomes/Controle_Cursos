@@ -9,7 +9,7 @@ Cursos
     @if (!empty($mensagem))
     <div class="alert alert-success">
         {{$mensagem}}
-    </div>    
+    </div>  
     @endif
 
 <ul class="list-group">    

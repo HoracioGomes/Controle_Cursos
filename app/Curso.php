@@ -7,4 +7,8 @@ class Curso extends Model
 public $timestamps = false;    
 protected $table  = 'cursos';
 protected $fillable = ['nome'];
+
+public function aulas(){
+    return $this->hasMany(Aula::class);
+}
 }
