@@ -15,7 +15,13 @@ class CreateAulasTable extends Migration
     {
         Schema::create('aulas', function (Blueprint $table) {
             $table->id();
+            $table->integer('numero');
+            $table->integer('id_curso');
             $table->timestamps();
+
+            $table->foreign('id_curso')
+                ->references('id')
+                ->on('cursos');
         });
     }
 

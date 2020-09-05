@@ -15,7 +15,13 @@ class CreateTopicosTable extends Migration
     {
         Schema::create('topicos', function (Blueprint $table) {
             $table->id();
+            $table->integer('numero');
+            $table->integer('id_aula');
             $table->timestamps();
+
+            $table->foreign('id_aula')
+                ->references('id')
+                ->on('aulas');
         });
     }
 
